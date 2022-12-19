@@ -26,3 +26,6 @@
 
 ### 5. Raise exception
 * Write a function that raises a type exception.
+
+### 6. Raise a message
+* Write a function that raises a name exception with a message.
