@@ -15,5 +15,5 @@ module.exports = class Rectangle {
       sizeY -= 1;
     }
   }
-}
+};
 
