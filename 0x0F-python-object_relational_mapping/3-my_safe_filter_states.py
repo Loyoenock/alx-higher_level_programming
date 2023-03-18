@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
-A list that displays all values in the states table of hbtn_0e_0_usa 
-where name matches the argument.
+Lists all values in the states tables of a database where name
+matches the argument
 """
 import sys
 import MySQLdb
