@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
-This script lists all State objects
-from the database `hbtn_0e_6_usa`.
+This script adds the State object
+`Louisiana` to the database `hbtn_0e_6_usa`.
 """
 
 from sys import argv
@@ -11,7 +11,7 @@ from sqlalchemy.orm import sessionmaker
 
 if __name__ == "__main__":
     """
-    Access to the database and get the states
+    Access to the database and get a state
     from the database.
     """
 
@@ -23,5 +23,9 @@ if __name__ == "__main__":
 
     session = Session()
 
-    for instance in session.query(State).order_by(State.id):
-        print('{0}: {1}'.format(instance.id, instance.name))
+    new_state = State(name="Louisiana")
+    session.add(new_state)
+    session.commit()
+
+    print('{0}'.format(new_state.id))
+    session.close()
