@@ -1,468 +1,189 @@
-# 0x0D. SQL - Introduction
-
-### Concepts
-
-**For this project, we expect you to look at these concepts:**
-    * Databases
-    [* Databases](https://intranet.alxswe.com/concepts/37)
-
-![hbnb](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/272/rtcwz.jpg)
+# 0x10. Python - Network #0
 
 ## Resources
-**Read or watch:**
 
-    * [What is Database & SQL?](https://intranet.alxswe.com/rltoken/yyRKTEdRkYEVlRgZPbasjw)
+__Read or watch:__
 
-    * [A Basic MySQL Tutorial](https://intranet.alxswe.com/rltoken/sV2PtK5YfQsXWW1malRZ5Q)
-
-    * [Basic SQL statements: DDL and DML](https://intranet.alxswe.com/rltoken/IUKo4-UaRZSKPvXr5u9oBw)
-
-    * [Basic queries: SQL and RA](https://intranet.alxswe.com/rltoken/rXKvu2u7vg1Hj6bnX7UgMg)
-
-    * [SQL technique: functions](https://intranet.alxswe.com/rltoken/-Riv_dzSYsJyvy-LlaO6Mg)
-
-    * [SQL technique: subqueries](https://intranet.alxswe.com/rltoken/QpIXoR--8eBIaidgSWYsBQ)
-
-    * [What makes the big difference between a backtick and an apostrophe?](https://intranet.alxswe.com/rltoken/Gt0nFJPJRwW2Y0izzwbVrw)
-
-    * [MySQL Cheat Sheet](https://intranet.alxswe.com/rltoken/1oU1LwCksQLXjs6fZYezrw)
-
-    * [MySQL 8.0 SQL Statement Syntax](https://intranet.alxswe.com/rltoken/HmdmLiYBM0Q34iCYPWd9XQ)
-
-    * [installing MySQL in Ubuntu 20.04](https://intranet.alxswe.com/rltoken/IpYI9rgbwfjxOAQQgpHCmQ)
+	* [HTTP](https://www3.ntu.edu.sg/home/ehchua/programming/webprogramming/HTTP_Basics.html) (HyperText Transfer Protocol) (except: “TRACE” Request Method, “CONNECT” Request Method, Language Negotiation and “Options MultiView” and Character Set Negotiation)
+	* [HTTP Cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies)
 
 ## Learning Objectives
 
-At the end of this project, you are expected to be able to explain to anyone,  without the help of Google:
+At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
 
-## General
-    * What’s a database
-    * What’s a relational database
-    * What does SQL stand for
-    * What’s MySQL
-    * How to create a database in MySQL
-    * What does DDL and DML stand for
-    * How to CREATE or ALTER a table
-    * How to SELECT data from a table
-    * How to INSERT, UPDATE or DELETE data
-    * What are subqueries
-    * How to use MySQL functions
-
-# Requirements
 ### General
 
-    * Allowed editors: vi, vim, emacs
-    * All your files will be executed on Ubuntu 20.04 LTS using MySQL 8.0 (version 8.0.25)
-    * All your files should end with a new line
-    * All your SQL queries should have a comment just before (i.e. syntax above)
-    * All your files should start by a comment describing the task
-    * All SQL keywords should be in uppercase (SELECT, WHERE…)
-    * A README.md file, at the root of the folder of the project, is mandatory
-    * The length of your files will be tested using 
+	* What a URL is
+	* What HTTP is
+	* How to read a URL
+	* The scheme for a HTTP URL
+	* What a domain name is
+	* What a sub-domain is
+	* ow to define a port number in a URL
+	* What a query string is
+	* What an HTTP request is
+	* What an HTTP response is
+	* What HTTP headers are
+	* What the HTTP message body is
+	* What an HTTP request method is
+	* What an HTTP response status code is
+	* What an HTTP Cookie is
+	* How to make a request with cURL
+	* What happens when you type google.com in your browser (Application level)
+	
+## Requirements
 
-## More Info
+###  General
 
-### Comments for your SQL file:
+	* Allowed editors: vi, vim, emacs
+	* - A README.md file, at the root of the folder of the project, is mandatory
+	* All your scripts will be tested on Ubuntu 20.04 LTS
+	* All your Bash scripts should be exactly 3 lines long (wc -l file should print 3)
+	* All your files should end with a new line
+	* All your files must be executable
+	* The first line of all your bash files should be exactly #!/bin/bash
+	* The second line of all your Bash scripts should be a comment explaining what is the script doing
+	* All curl commands must have the option -s (silent mode)
+	* All your files will be interpreted/compiled on Ubuntu 20.04 LTS using python3 (version 3.8.5)
+	* The first line of all your Python files should be exactly #!/usr/bin/python3
+	* Your code should use the pycodestyle (version 2.8.*)
+	* All your modules should be documented: python3 -c 'print(__import__("my_module").__doc__)'
+	* All your classes should be documented: python3 -c 'print(__import__("my_module").MyClass.__doc__)'
+	* All your functions (inside and outside a class) should be documented: python3 -c 'print(__import__("my_module").my_function.__doc__)' and python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
+	* A documentation is not a simple word, it’s a real sentence explaining what’s the purpose of the module, class or method (the length of it will be verified)
 
-```
-$ cat my_script.sql
--- 3 first students in the Batch ID=3
--- because Batch 3 is the best!
-SELECT id, name FROM students WHERE batch_id = 3 ORDER BY created_at DESC LIMIT 3;
+### Tasks
 
-$
+[0. cURL body size](./0-body_size.sh)
 
-```
+Write a Bash script that takes in a URL, sends a request to that URL, and displays the size of the body of the response
 
-## Install MySQL 8.0 on Ubuntu 20.04 LTS
-
-```
-$ sudo apt update
-$ sudo apt install mysql-server
-...
-$ mysql --version
-mysql  Ver 8.0.25-0ubuntu0.20.04.1 for Linux on x86_64 ((Ubuntu))
-
-$
-
-```
-Connect to your MySQL server:
-```
-$ sudo mysql
-Welcome to the MySQL monitor.  Commands end with ; or \g.
-Your MySQL connection id is 11
-Server version: 8.0.25-0ubuntu0.20.04.1 (Ubuntu)
-
-Copyright (c) 2000, 2021, Oracle and/or its affiliates.
-Oracle is a registered trademark of Oracle Corporation and/or its
-affiliates. Other names may be trademarks of their respective
-owners.
-
-Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
-
-mysql>
-mysql> quit
-Bye
-$
+	* The size must be displayed in bytes
+	* You have to use curl
+Please test your script in the sandbox provided, using the web server running on port 5000
 
 ```
-## Use “container-on-demand” to run MySQL
-
-**In the container, credentials are root/root**
-    * Ask for container Ubuntu 20.04
-    * Connect via SSH
-    * OR connect via the Web terminal
-    * In the container, you should start MySQL before playing with it:
+guillaume@ubuntu:~/0x10$ ./0-body_size.sh 0.0.0.0:5000
+10
+guillaume@ubuntu:~/0x10$ 
 
 ```
-$ service mysql start                                                   
- * Starting MySQL database server mysqld 
-$
-$ cat 0-list_databases.sql | mysql -uroot -p                               
-Database                                                                                   
-information_schema                                                                         
-mysql                                                                                      
-performance_schema                                                                         
-sys                      
-$
+[1. cURL to the end](./1-body.sh)
+
+Write a Bash script that takes in a URL, sends a GET request to the URL, and displays the body of the response
+
+	* Display only body of a 200 status code response
+	* You have to use curl
+Please test your script in the sandbox provided, using the web server running on port 5000
+
+```
+guillaume@ubuntu:~/0x10$ ./1-body.sh 0.0.0.0:5000/route_1 ; echo ""
+Route 2
+guillaume@ubuntu:~/0x10$ 
 
 ```
 
-**In the container, credentials are root/root**
+[2. cURL Method](./2-delete.sh)
 
-### Quiz questions
+2. cURL Method
+mandatory
+Write a Bash script that sends a DELETE request to the URL passed as the first argument and displays the body of the response
 
-## Tasks
-
-[0. List databases](/0-list_databases.sql)
-
-Write a script that lists all databases of your MySQL server.
-
-```
-guillaume@ubuntu:~/$ cat 0-list_databases.sql | mysql -hlocalhost -uroot -p
-Enter password: 
-Database                                                                                     
-hbtn_0c_0                                                                                    
-information_schema                                                                           
-mysql                                                                                        
-performance_schema                                                                           
-sys        
-guillaume@ubuntu:~/$ 
+	* You have to use curl
+Please test your script in the sandbox provided, using the web server running on port 5000
 
 ```
-[1. Create a database](./1-create_database_if_missing.sql)
-
-Write a script that creates the database hbtn_0c_0 in your MySQL server.
-    * If the database hbtn_0c_0 already exists, your script should not fail
-    * You are not allowed to use the SELECT or SHOW statements
-
-```
-guillaume@ubuntu:~/$ cat 1-create_database_if_missing.sql | mysql -hlocalhost -uroot -p
-Enter password: 
-guillaume@ubuntu:~/$ cat 0-list_databases.sql | mysql -hlocalhost -uroot -p
-Enter password: 
-Database
-information_schema
-hbtn_0c_0
-mysql
-performance_schema
-guillaume@ubuntu:~/$ cat 1-create_database_if_missing.sql | mysql -hlocalhost -uroot -p
-Enter password: 
-guillaume@ubuntu:~/$ 
+guillaume@ubuntu:~/0x10$ ./2-delete.sh 0.0.0.0:5000/route_3 ; echo ""
+I'm a DELETE request
+guillaume@ubuntu:~/0x10$ 
 
 ```
 
-[2. Delete a database](./2-remove_database.sql)
+[3. cURL only methods](./3-methods.sh)
 
-Write a script that deletes the database hbtn_0c_0 in your MySQL server.
-    * If the database hbtn_0c_0 doesn’t exist, your script should not fail
-    * You are not allowed to use the SELECT or SHOW statements
+Write a Bash script that takes in a URL and displays all HTTP methods the server will accept.
+
+	* You have to use curl
+Please test your script in the sandbox provided, using the web server running on port 5000
 
 ```
-guillaume@ubuntu:~/$ cat 0-list_databases.sql | mysql -hlocalhost -uroot -p
-Enter password: 
-Database                                                                                     
-hbtn_0c_0                                                                                    
-information_schema                                                                           
-mysql                                                                                        
-performance_schema                                                                           
-sys        
-guillaume@ubuntu:~/$ cat 2-remove_database.sql | mysql -hlocalhost -uroot -p
-Enter password: 
-guillaume@ubuntu:~/$ cat 0-list_databases.sql | mysql -hlocalhost -uroot -p
-Enter password: 
-Database                                                                                                                                                                  
-information_schema                                                                           
-mysql                                                                                        
-performance_schema                                                                           
-sys        
-guillaume@ubuntu:~/$ 
+guillaume@ubuntu:~/0x10$ ./3-methods.sh 0.0.0.0:5000/route_4
+OPTIONS, HEAD, PUT
+guillaume@ubuntu:~/0x10$ 
 
 ```
 
-[3. List tables](./3-list_tables.sql)
+[4. cURL headers](./4-header.sh)
 
-Write a script that lists all the tables of a database in your MySQL server.
-    * The database name will be passed as argument of mysql command (in the following example: mysql is the name of the database)
+Write a Bash script that takes in a URL as an argument, sends a GET request to the URL, and displays the body of the response
+
+	* A header variable X-School-User-Id must be sent with the value 98
+	* You have to use curl
+Please test your script in the sandbox provided, using the web server running on port 5000
 
 ```
-guillaume@ubuntu:~/$ cat 3-list_tables.sql | mysql -hlocalhost -uroot -p mysql
-Enter password: 
-Tables_in_mysql                                                                              
-columns_priv                                                                                 
-component                                                                                    
-db                                                                                           
-default_roles                                                                                
-engine_cost                                                                                  
-func                                                                                         
-general_log                                                                                  
-global_grants                                                                                
-gtid_executed                                                                                
-help_category                                                                                
-help_keyword                                                                                 
-help_relation                                                                                
-help_topic                                                                                   
-innodb_index_stats                                                                           
-innodb_table_stats                                                                           
-password_history                                                                             
-plugin                                                                                       
-procs_priv                                                                                   
-proxies_priv                                                                                 
-replication_asynchronous_connection_failover                                                 
-replication_asynchronous_connection_failover_managed                                         
-role_edges                                                                                   
-server_cost                                                                                  
-servers                                                                                      
-slave_master_info                                                                            
-slave_relay_log_info                                                                         
-slave_worker_info                                                                            
-slow_log                                                                                     
-tables_priv                                                                                  
-time_zone                                                                                    
-time_zone_leap_second                                                                        
-time_zone_name                                                                               
-time_zone_transition                                                                         
-time_zone_transition_type                                                                    
-user
-guillaume@ubuntu:~/$ 
+guillaume@ubuntu:~/0x10$ ./4-header.sh 0.0.0.0:5000/route_5 ; echo ""
+Hello School!
+guillaume@ubuntu:~/0x10$ 
+
+```
+[5. cURL POST parameters](./5-post_params.sh)
+
+Write a Bash script that takes in a URL, sends a POST request to the passed URL, and displays the body of the response
+
+	* A variable email must be sent with the value test@gmail.com
+	* A variable subject must be sent with the value I will always be here for PLD
+	* You have to use curl
+Please test your script in the sandbox provided, using the web server running on port 5000
+
+```
+guillaume@ubuntu:~/0x10$ ./5-post_params.sh 0.0.0.0:5000/route_6 ; echo ""
+POST params:
+    email: test@gmail.com
+    subject: I will always be here for PLD
+guillaume@ubuntu:~/0x10$ 
 
 ```
 
-[4. First table](./4-first_table.sql)
-Write a script that creates a table called first_table in the current database in your MySQL server.
+[6. Find a peak](./6-peak.py),[](./6-peak.txt)
 
-    * first_table description:
-        - id INT
-        - name VARCHAR(256)
-    * The database name will be passed as an argument of the mysql command
-    * If the table first_table already exists, your script should not fail
-    * You are not allowed to use the SELECT or SHOW statements
+Technical interview preparation:
 
-```
-guillaume@ubuntu:~/$ cat 4-first_table.sql | mysql -hlocalhost -uroot -p hbtn_0c_0
-Enter password: 
-guillaume@ubuntu:~/$ cat 3-list_tables.sql | mysql -hlocalhost -uroot -p hbtn_0c_0
-Enter password: 
-Tables_in_hbtn_0c_0
-first_table
-guillaume@ubuntu:~/$ 
+	* You are not allowed to google anything
+	* Whiteboard first
+Write a function that finds a peak in a list of unsorted integers.
+
+	* rototype: def find_peak(list_of_integers):
+	* You are not allowed to import any module
+	* Your algorithm must have the lowest complexity (hint: you don’t need to go through all numbers to find a peak)
+	* 6-peak.py must contain the function
+	* 6-peak.txt must contain the complexity of your algorithm: O(log(n)), O(n), O(nlog(n)) or O(n2)
+Note: there may be more than one peak in the list
 
 ```
-[5. Full description](./5-full_table.sql)
-Write a script that prints the full description of the table first_table from the database hbtn_0c_0 in your MySQL server.
-    * The database name will be passed as an argument of the mysql command
-    * You are not allowed to use the DESCRIBE or EXPLAIN statements
+guillaume@ubuntu:~/0x10$ cat 6-main.py
+#!/usr/bin/python3
+""" Test function find_peak """
+find_peak = __import__('6-peak').find_peak
 
-```
-guillaume@ubuntu:~/$ cat 5-full_table.sql | mysql -hlocalhost -uroot -p hbtn_0c_0
-Enter password: 
-Table   Create Table                                                                         
-first_table     CREATE TABLE `first_table` (\n  `id` int DEFAULT NULL,\n  `name` varchar(256) DEFAULT NULL\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci        
-guillaume@ubuntu:~/$ 
+print(find_peak([1, 2, 4, 6, 3]))
+print(find_peak([4, 2, 1, 2, 3, 1]))
+print(find_peak([2, 2, 2]))
+print(find_peak([]))
+print(find_peak([-2, -4, 2, 1]))
+print(find_peak([4, 2, 1, 2, 2, 2, 3, 1]))
 
-```
-
-[6. List all in table](./6-list_values.sql)
-Write a script that lists all rows of the table first_table from the database hbtn_0c_0 in your MySQL server.
-    * All fields should be printed
-    * The database name will be passed as an argument of the mysql command
-```
-guillaume@ubuntu:~/$ cat 6-list_values.sql | mysql -hlocalhost -uroot -p hbtn_0c_0
-Enter password: 
-guillaume@ubuntu:~/$ 
-
-```
-
-[7. First add](./)
-    * Write a script that inserts a new row in the table first_table (database hbtn_0c_0) in your MySQL server.
-        - New row:
-            - id = 89
-            - name = Best School
-    The database name will be passed as an argument of the mysql command
-
-```
-guillaume@ubuntu:~/$ cat 7-insert_value.sql | mysql -hlocalhost -uroot -p hbtn_0c_0
-Enter password: 
-guillaume@ubuntu:~/$ cat 6-list_values.sql | mysql -hlocalhost -uroot -p hbtn_0c_0
-Enter password: 
-id  name
-89  Best School
-guillaume@ubuntu:~/$ cat 7-insert_value.sql | mysql -hlocalhost -uroot -p hbtn_0c_0
-Enter password: 
-guillaume@ubuntu:~/$ cat 7-insert_value.sql | mysql -hlocalhost -uroot -p hbtn_0c_0
-Enter password: 
-guillaume@ubuntu:~/$ cat 6-list_values.sql | mysql -hlocalhost -uroot -p hbtn_0c_0
-Enter password: 
-id  name
-89  Best School
-89  Best School
-89  Best School
-guillaume@ubuntu:~/$ 
-
-```
-
-[8. Count 89](./8-count_89.sql)
-Write a script that displays the number of records with id = 89 in the table first_table of the database hbtn_0c_0 in your MySQL server.
-
-    * The database name will be passed as an argument of the mysql command
-
-```
-guillaume@ubuntu:~/$ cat 8-count_89.sql | mysql -hlocalhost -uroot -p hbtn_0c_0 | tail -1
-Enter password: 
+guillaume@ubuntu:~/0x10$ ./6-main.py
+6
 3
-guillaume@ubuntu:~/$ 
+2
+None
+2
+4
+guillaume@ubuntu:~/0x10$ wc -l 6-peak.txt 
+2 6-peak.txt
+guillaume@ubuntu:~/0x10$ 
 
 ```
 
-[9. Full creation](./)
-Write a script that creates a table second_table in the database hbtn_0c_0 in your MySQL server and add multiples rows.
-    * second_table description:
-        - id INT
-        - name VARCHAR(256)
-        - score INT
 
-    * The database name will be passed as an argument to the mysql command
-    * If the table second_table already exists, your script should not fail
-    * You are not allowed to use the SELECT and SHOW statements
-    * Your script should create these records
-        - id = 1, name = “John”, score = 10
-        - id = 2, name = “Alex”, score = 3
-        - id = 3, name = “Bob”, score = 14
-        - id = 4, name = “George”, score = 8
-
-```
-guillaume@ubuntu:~/$ cat 9-full_creation.sql | mysql -hlocalhost -uroot -p hbtn_0c_0
-Enter password: 
-guillaume@ubuntu:~/$ 
-
-```
-
-[10. List by best](./10-top_score.sql)
-Write a script that lists all records of the table second_table of the database hbtn_0c_0 in your MySQL server.
-    * Results should display both the score and the name (in this order)
-    * Records should be ordered by score (top first)
-    * The database name will be passed as an argument of the mysql command
-
-```
-guillaume@ubuntu:~/$ cat 10-top_score.sql | mysql -hlocalhost -uroot -p hbtn_0c_0
-Enter password: 
-score   name
-14  Bob
-10  John
-8   George
-3   Alex
-guillaume@ubuntu:~/$ 
-
-```
-[11. Select the best](./11-best_score.sql)
-Write a script that lists all records with a score >= 10 in the table second_table of the database hbtn_0c_0 in your MySQL server.
-
-    * Results should display both the score and the name (in this order)
-    * Records should be ordered by score (top first)
-    * The database name will be passed as an argument of the mysql command
-
-```
-guillaume@ubuntu:~/$ cat 11-best_score.sql | mysql -hlocalhost -uroot -p hbtn_0c_0
-Enter password: 
-score   name
-14  Bob
-10  John
-guillaume@ubuntu:~/$ 
-
-```
-[12. Cheating is bad](./12-no_cheating.sql)
-Write a script that updates the score of Bob to 10 in the table second_table.
-    * You are not allowed to use Bob’s id value, only the name field
-    * The database name will be passed as an argument of the mysql command
-
-```
-guillaume@ubuntu:~/$ cat 12-no_cheating.sql | mysql -hlocalhost -uroot -p hbtn_0c_0
-Enter password: 
-guillaume@ubuntu:~/$ cat 10-top_score.sql | mysql -hlocalhost -uroot -p hbtn_0c_0
-Enter password: 
-score   name
-10  John
-10  Bob
-8   George
-3   Alex
-guillaume@ubuntu:~/$ 
-
-```
-
-[13. Score too low](./13-change_class.sql)
-Write a script that removes all records with a score <= 5 in the table second_table of the database hbtn_0c_0 in your MySQL server.
-    * The database name will be passed as an argument of the mysql command
-
-```
-guillaume@ubuntu:~/$ cat 13-change_class.sql | mysql -hlocalhost -uroot -p hbtn_0c_0
-Enter password: 
-guillaume@ubuntu:~/$ cat 10-top_score.sql | mysql -hlocalhost -uroot -p hbtn_0c_0
-Enter password: 
-score   name
-10  John
-10  Bob
-8   George
-guillaume@ubuntu:~/$
-
-```
-[14. Average](./)
-Write a script that computes the score average of all records in the table second_table of the database hbtn_0c_0 in your MySQL server.
-    * The result column name should be average
-    * The database name will be passed as an argument of the mysql command
-
-```
-guillaume@ubuntu:~/$ cat 14-average.sql | mysql -hlocalhost -uroot -p hbtn_0c_0
-Enter password: 
-average
-9.3333
-guillaume@ubuntu:~/$ 
-
-```
-
-[14-average.sql](./15-groups.sql)
-Write a script that lists the number of records with the same score in the table second_table of the database hbtn_0c_0 in your MySQL server.
-
-    * The result should display:
-        - the score
-        - the number of records for this score with the label number
-    * The list should be sorted by the number of records (descending)
-    * The database name will be passed as an argument to the mysql command
-
-```
-guillaume@ubuntu:~/$ cat 15-groups.sql | mysql -hlocalhost -uroot -p hbtn_0c_0
-Enter password: 
-score   number
-10  2
-8   1
-guillaume@ubuntu:~/$ 
-
-```
-[16. Say my name](./16-no_link.sql)
-Write a script that lists all records of the table second_table of the database hbtn_0c_0 in your MySQL server.
-    * Don’t list rows without a name value 
-    * Results should display the score and the name (in this order)
-    * Records should be listed by descending score
-    * The database name will be passed as an argument to the mysql command
-In this example, new data have been added to the table second_table.
-
-Author - Loyo Enoch
