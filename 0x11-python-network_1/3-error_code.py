@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
-A script that takes in a URL, sends it a request 
-& displays the body of the response (decoded in utf-8).
+A script that takes in a URL, sends it a request
+& displays the body of the response (decoded in utf-8)
 """
 if __name__ == "__main__":
     import urllib.error as error
