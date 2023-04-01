@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-A script that takes in a URL, sends a request to it 
+A script that takes in a URL, sends a request to it
 and displays the value of the X-Request-Id variable
 """
 if __name__ == "__main__":
